@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios, { AxiosRequestConfig, AxiosResponse } from 'axios'
+import installComponents from './components'
+import '../src/assets/css/iconfont.css'
 
 axios.interceptors.request.use(function (config: AxiosRequestConfig) {
   const token = localStorage.getItem('token')
@@ -22,4 +24,8 @@ axios.interceptors.response.use(function (response: AxiosResponse) {
   return Promise.reject(error);
 })
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App)
+.use(store)
+.use(router)
+.use(installComponents)
+.mount('#app')

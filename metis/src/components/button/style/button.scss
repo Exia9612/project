@@ -1,0 +1,24 @@
+button {
+  box-sizing: border-box;
+  font-size: 14px;
+  text-align: center;
+  width: 76px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  border-radius: 5%;
+  background-color: #38bdf8;
+  border: 1px solid #38bdf8;
+}
+
+button.small {
+  height: 24px;
+}
+
+button.medium {
+  height: 32px;
+}
+
+button.large {
+  height: 40px;
+}

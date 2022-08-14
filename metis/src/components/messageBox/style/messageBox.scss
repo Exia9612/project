@@ -1,0 +1,21 @@
+.message-box-tran-leave-to,
+.message-box-tran-enter-from {
+  opacity: 0;
+}
+
+.message-box-tran-enter-active {
+  transition: opacity .2s ease-in;
+}
+
+.message-box-tran-leave-active {
+  transition: opacity .2s ease-out;
+}
+
+.messageBoxContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+}

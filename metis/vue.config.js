@@ -9,5 +9,10 @@ module.exports = defineConfig({
         changeOrigin: true
       }
     }
+  },
+  configureWebpack: {
+    plugins: [
+      require('unplugin-vue-define-options/webpack')()
+    ]
   }
 })
