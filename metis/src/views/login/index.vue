@@ -35,12 +35,16 @@ const state = reactive<loginReactive>({
   password: ''
 })
 
+// const handleLogin = async () => {
+//   const res = await login({
+//     username: state.username,
+//     password: state.password
+//   })
+//   redirectAfterLogin(res)
+// }
+
 const handleLogin = async () => {
-  const res = await login({
-    username: state.username,
-    password: state.password
-  })
-  redirectAfterLogin(res)
+  router.push({path: '/'})
 }
 
 const redirectAfterLogin = (res: AxiosResponse) => {

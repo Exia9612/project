@@ -12,6 +12,7 @@ const install = (app: App) => {
     console.log(component.name, component)
     app.component(component.name, component)
   })
+  app.config.globalProperties.$messageBox = MyMessageBox
 }
 
 export default install

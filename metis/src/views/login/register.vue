@@ -74,6 +74,5 @@ const register = async () => {
 </script>
 
 <style lang="scss" scoped>
-// @import '../../style/common/common.scss';
 @import '../../style/login/login.scss';
 </style>

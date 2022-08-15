@@ -10,6 +10,7 @@
 
 <script lang="ts" setup>
 import { useRouter } from 'vue-router';
+import { MessageBox } from '@/components/messageBox';
 
 const router = useRouter()
 
@@ -18,8 +19,9 @@ defineOptions({
 })
 
 const handleLogout = () => {
-  localStorage.removeItem('token')
-  router.push('/login')
+  MessageBox({})
+  // localStorage.removeItem('token')
+  // router.push('/login')
 }
 </script>
 
