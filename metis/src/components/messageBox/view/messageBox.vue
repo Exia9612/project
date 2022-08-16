@@ -15,7 +15,7 @@
           </i>
         </div>
         <p class="content">
-          {{ content }}
+          <content-view :field="field"></content-view>
         </p>
         <div
           class="button-groups"
@@ -28,7 +28,8 @@
 </template>
 
 <script lang="ts" setup>
-import { reactive } from 'vue';
+import { h, reactive } from 'vue';
+import { IMessageBoxReactive } from '../typing/index'
 
 defineOptions({
   name: 'my-messagebox'
@@ -50,19 +51,43 @@ const props = defineProps({
   cancelButtonText: {
     type: String,
     default: ''
+  },
+  field: {
+    type: String,
+    default: 'confirm'
   }
 })
 
-const state = reactive({
-  visible: false
+const state = reactive<IMessageBoxReactive>({
+  visible: false,
+  promptValue: '',
+  action: 'unknown'
 })
 
+const contentView = ({ field }: { field: string }) => {
+  switch (field) {
+    case 'prompt':
+      return h(
+        'input',
+        {
+          value: state.promptValue,
+          onInput: (event: Event) => state.promptValue = (event.target as HTMLInputElement).value,
+          class: 'messagebox-input'
+        }
+      )
+    default:
+      return h('p', null, props.content)
+  }
+}
+
 const confirmButtonClick = (flag: boolean) => {
-  state.visible = flag
+  state.action = 'confirm'
+  setVisible(flag)
 }
 
 const cancelButtonClick = (flag: boolean) => {
-  state.visible = flag
+  state.action = 'cancel'
+  setVisible(flag)
 }
 
 const setVisible = (flag: boolean) => {
@@ -70,7 +95,8 @@ const setVisible = (flag: boolean) => {
 }
 
 defineExpose({
-  setVisible
+  setVisible,
+  state
 })
 </script>
 

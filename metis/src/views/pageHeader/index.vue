@@ -1,6 +1,8 @@
 <template>
   <header>
-    <my-button>Click</my-button>
+    <my-button @click="test">
+      click
+    </my-button>
     <i
       class="iconfont icon-toggle-right"
       @click="handleLogout">
@@ -19,9 +21,13 @@ defineOptions({
 })
 
 const handleLogout = () => {
-  MessageBox({})
+  MessageBox.prompt!({}).then((value) => console.log(value))
   // localStorage.removeItem('token')
   // router.push('/login')
+}
+
+const test = () => {
+  console.log('hello')
 }
 </script>
 

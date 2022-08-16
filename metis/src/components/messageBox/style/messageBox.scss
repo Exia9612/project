@@ -50,3 +50,12 @@
 .message-box-wrapper .content {
   margin: 20px 20px;
 }
+
+.messagebox-input {
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  width: 100%;
+  height: 32px;
+  border: 1px solid #ddd;
+}

@@ -1,6 +1,8 @@
+import { reactive } from 'vue'
+
 export interface IMessageBoxOptions {
   [index: string]: string | undefined,
-  filed?: string,
+  field?: string,
   type?: string,
   content?: string,
   confirmButtonText?: string,
@@ -8,11 +10,20 @@ export interface IMessageBoxOptions {
 }
 
 export interface IMessageBoxExpose {
-  setVisible: (flag: boolean) => void
+  setVisible: (flag: boolean) => void,
+  state: IMessageBoxReactive
+}
+
+export interface IMessageBoxReactive {
+  visible: boolean,
+  promptValue: string,
+  action: 'cancel' | 'confirm' | 'unknown'
+}
+
+export const fields = ['confirm', 'prompt'] as const
+
+export type MessageBoxShortcuts<T extends readonly string[]> = {
+  [V in T[number]]: MessageBoxFun
 }
 
 export type MessageBoxFun = (options: IMessageBoxOptions) => Promise<unknown>
-
-export type MessageBoxShortcuts = {
-  confirm: MessageBoxFun
-}
