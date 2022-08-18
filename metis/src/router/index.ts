@@ -25,6 +25,14 @@ const routes: Array<RouteRecordRaw> = [
     meta: {
       displayHeader: false
     }
+  },
+  {
+    path: '/user',
+    name: 'user',
+    component: () => import('../views/user/index.vue'),
+    meta: {
+      displayHeader: true
+    }
   }
 ]
 
@@ -33,11 +41,11 @@ const router = createRouter({
   routes
 })
 
-// router.beforeEach((to, from) => {
-//   const token  = localStorage.getItem('token')
-//   if (!token && to.name !== 'login') {
-//     return {name: 'login'}
-//   }
-// })
+router.beforeEach((to, from) => {
+  const token  = localStorage.getItem('token')
+  if (!token && to.name !== 'login') {
+    return {name: 'login'}
+  }
+})
 
 export default router

@@ -11,3 +11,7 @@ body {
 .errorTip {
   color: rgb(238, 72, 72);
 }
+
+.moveRight {
+  transition: width 1s ease;
+}

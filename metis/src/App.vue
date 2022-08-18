@@ -1,20 +1,17 @@
 <template>
-  <page-header v-if="$route.meta.displayHeader"></page-header>
-  <router-view/>
+  <div id="hello">
+    <page-header v-if="$route.meta.displayHeader"></page-header>
+    <router-view/>
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from 'vue'
+<script setup lang="ts">
 import pageHeader from './views/pageHeader/index.vue'
 
-console.log(pageHeader)
-
-export default defineComponent({
-  name: 'header',
-  components: {
-    pageHeader: pageHeader
-  }
+defineOptions({
+  name: 'app'
 })
+
 </script>
 
 <style lang="scss">

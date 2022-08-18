@@ -1,8 +1,9 @@
 <template>
   <header>
-    <my-button @click="test">
-      click
-    </my-button>
+    <i
+      class="iconfont icon-user"
+      @click="handleClickUser">
+    </i>
     <i
       class="iconfont icon-toggle-right"
       @click="handleLogout">
@@ -13,21 +14,29 @@
 <script lang="ts" setup>
 import { useRouter } from 'vue-router';
 import { MessageBox } from '@/components/messageBox';
+import { useStore } from 'vuex';
 
 const router = useRouter()
+const store = useStore()
 
 defineOptions({
   name: 'page-header'
 })
 
 const handleLogout = () => {
-  MessageBox.prompt!({}).then((value) => console.log(value))
-  // localStorage.removeItem('token')
-  // router.push('/login')
+  MessageBox({
+    title: 'confirm',
+    content: 'logout!',
+    cancelButtonText: 'cancel',
+    confirmButtonText: 'confirm'
+  }).then(() => {
+    localStorage.removeItem('token')
+    router.push('/login')
+  }).catch(() => {})
 }
 
-const test = () => {
-  console.log('hello')
+const handleClickUser = () => {
+  router.push('/user')
 }
 </script>
 

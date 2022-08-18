@@ -2,7 +2,9 @@ button {
   box-sizing: border-box;
   font-size: 14px;
   text-align: center;
+  margin-right: 10px;
   width: 76px;
+  cursor: pointer;
   color: #fff;
   overflow: hidden;
   white-space: nowrap;
@@ -22,4 +24,10 @@ button.medium {
 
 button.large {
   height: 40px;
+}
+
+button.plain {
+  color: #999;
+  background-color: #fff;
+  border: 1px solid #ddd;
 }

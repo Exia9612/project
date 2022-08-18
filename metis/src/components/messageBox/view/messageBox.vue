@@ -3,15 +3,15 @@
     <div
       class="message-box-container"
       v-if="state.visible"
-      @click="cancelButtonClick(false)">
+      @click="cancelButtonClick">
       <div
         class="message-box-wrapper"
         @click.stop>
         <div class="message-box-title">
-          <span>title</span>
+          <span>{{ title }}</span>
           <i
             class="iconfont icon-close"
-            @click="cancelButtonClick(false)">
+            @click="cancelButtonClick">
           </i>
         </div>
         <p class="content">
@@ -20,7 +20,12 @@
         <div
           class="button-groups"
           v-if="confirmButtonText || cancelButtonText">
-          button
+          <my-button @click="confirmButtonClick">{{ confirmButtonText }}</my-button>
+          <my-button
+            type="plain"
+            @click="cancelButtonClick">
+            {{ cancelButtonText }}
+          </my-button>
         </div>
       </div>
     </div>
@@ -30,6 +35,7 @@
 <script lang="ts" setup>
 import { h, reactive } from 'vue';
 import { IMessageBoxReactive } from '../typing/index'
+import myButton from '../../button/view/button.vue'
 
 defineOptions({
   name: 'my-messagebox'
@@ -80,14 +86,14 @@ const contentView = ({ field }: { field: string }) => {
   }
 }
 
-const confirmButtonClick = (flag: boolean) => {
+const confirmButtonClick = () => {
   state.action = 'confirm'
-  setVisible(flag)
+  setVisible(false)
 }
 
-const cancelButtonClick = (flag: boolean) => {
+const cancelButtonClick = () => {
   state.action = 'cancel'
-  setVisible(flag)
+  setVisible(false)
 }
 
 const setVisible = (flag: boolean) => {

@@ -3,7 +3,8 @@
     :class="{
       small: size === 'small',
       medium: size === 'medium',
-      large: size === 'large'
+      large: size === 'large',
+      plain: type === 'plain'
     }"
     @click="handleclick">
     <slot name="default">Click</slot>
@@ -23,6 +24,10 @@ const props = defineProps({
   size: {
     type: String,
     default: 'medium'
+  },
+  type: {
+    type: String,
+    default: ''
   }
 })
 

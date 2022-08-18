@@ -4,6 +4,7 @@ export interface IMessageBoxOptions {
   [index: string]: string | undefined,
   field?: string,
   type?: string,
+  title?: string,
   content?: string,
   confirmButtonText?: string,
   cancelButtonText?: string
